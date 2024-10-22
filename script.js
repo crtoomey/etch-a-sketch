@@ -13,7 +13,6 @@ function handleDivGridSetup() {
         for (let index = 0; index < 16; index++) {
             // Columns
             const newDivForGrid = document.createElement("div");
-            newDivForGrid.innerText = "Div " + divCounter;
             newDivForGrid.classList.add("inner-div");
             divCounter++;
             rowContainer.appendChild(newDivForGrid);

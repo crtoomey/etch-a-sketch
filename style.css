@@ -1,3 +1,16 @@
+* {
+    margin: 0;
+}
+
+/* Styling for containers */
+.main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    width: 100vw;
+}
+
 .container {
     display: flex;
     flex-direction: column;
@@ -17,4 +30,33 @@
 .row-container>div {
     width: 100%;
     height: 100%;
+}
+
+/* Styling for nav bar and buttons */
+.nav-bar {
+    margin-left: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.left-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+}
+
+.left-nav>em {
+    font-size: 0.5rem;
+    font-weight: lighter;
+}
+
+.button {
+    margin-right: 5px;
+    border-radius: 8px;
+    border: none;
 }
