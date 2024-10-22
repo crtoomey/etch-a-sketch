@@ -5,6 +5,65 @@ const gridContainer = document.querySelector(".container");
 const makeNewGridButton = document.querySelector(".new-grid-button");
 const randomColorButton = document.querySelector(".random-color-button");
 
+// Background and Brush Color Picker ( sorry its a mess idk what im doing :C )
+let backgroundColorPicker;
+let brushColorPicker;
+const defaultBackgroundColor = "#FFFFFF";
+const defaultBrushColor = "#000000";
+
+window.addEventListener("load", startupBackground, false);
+
+function startupBackground() {
+    backgroundColorPicker = document.querySelector("#background-color-picker");
+    backgroundColorPicker.value = defaultBackgroundColor;
+    backgroundColorPicker.addEventListener("input", updateFirstBackgroud, false);
+    backgroundColorPicker.addEventListener("change", updateAllBackgrounds, false);
+    backgroundColorPicker.select();
+}
+
+function updateFirstBackgroud(event) {
+    const innerDiv = document.querySelectorAll(".inner-div");
+    if (innerDiv) {
+        div.style.backgroundColor = event.target.value;
+    }
+}
+
+function updateAllBackgrounds(event) {
+    document.querySelectorAll(".inner-div").forEach((d) => {
+        d.style.backgroundColor = event.target.value;
+    });
+}
+
+window.addEventListener("load", startupBrush, false);
+
+function startupBrush() {
+    brushColorPicker = document.querySelector("#brush-color-picker");
+    brushColorPicker.value = defaultBrushColor;
+    brushColorPicker.addEventListener("input", updateFirstBrush, false);
+    brushColorPicker.addEventListener("change", updateAllBrushes, false);
+    brushColorPicker.select();
+}
+
+function updateFirstBrush(event) {
+    const innerDiv = document.querySelectorAll(".inner-div");
+    if (innerDiv) {
+        div.style.backgroundColor = event.target.value;
+    }
+}
+
+function updateAllBrushes(event) {
+    let innerDivs = document.querySelectorAll(".inner-div");
+
+    innerDivs.forEach((div) => {
+        div.addEventListener('mouseover', () => {
+            div.style.backgroundColor = event.target.value;
+        });
+    });
+}
+
+
+
+// Initial grid is 16x16
 function handleDivGridSetup() {
     for (let index = 0; index < 16; index++) {
         // Rows
@@ -47,6 +106,7 @@ function setColorToRandomColor(nodes) {
     });
 }
 
+// Initial color is black
 function setColorToInitialColor(nodes) {
     nodes.forEach((div) => {
         div.addEventListener('mouseover', () => {
@@ -58,7 +118,7 @@ function setColorToInitialColor(nodes) {
 // Sets all div background colors to white
 function handleEraseBoard() {
     innerDivs.forEach((div) => {
-        div.style.backgroundColor = 'white';
+        div.style.backgroundColor = backgroundColorPicker.value;
     });
 }
 
@@ -83,8 +143,7 @@ function createNewGrid(verticalAxis, horizontalAxis) {
     }
 }
 
-
-
+// Makes a new grid based on user input
 makeNewGridButton.addEventListener('click', () => {
     let vertical = prompt("Please enter the number of blocks for the vertical axis:", "16");
     let horizontal = prompt("Please enter the number of blocks for the horizontal axis:", "16");
@@ -102,5 +161,7 @@ randomColorButton.addEventListener('click', () => {
     handleEraseBoard();
     setColorToRandomColor(innerDivs);
 })
+
+
 
 setColorToInitialColor(innerDivs);
