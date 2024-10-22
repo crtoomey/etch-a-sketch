@@ -1,5 +1,6 @@
 * {
     margin: 0;
+    font-family: Roboto, sans-serif;
 }
 
 /* Styling for containers */
@@ -51,12 +52,19 @@
 }
 
 .left-nav>em {
-    font-size: 0.5rem;
-    font-weight: lighter;
+    font-size: 0.75rem;
+    font-weight: 300;
 }
 
 .button {
     margin-right: 5px;
     border-radius: 8px;
     border: none;
+}
+
+/* Footer styles */
+footer {
+    text-align: center;
+    font-size: 0.75rem;
+    font-weight: 300;
 }
