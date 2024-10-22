@@ -6,11 +6,16 @@ function handleDivGridSetup() {
     let divCounter = 0;
 
     for (let index = 0; index < 16; index++) {
+        // Rows
+        const rowContainer = document.createElement("div");
+        rowContainer.classList.add("row-container");
+        gridContainer.appendChild(rowContainer);
         for (let index = 0; index < 16; index++) {
+            // Columns
             const newDivForGrid = document.createElement("div");
             newDivForGrid.innerText = "Div " + divCounter;
             divCounter++;
-            gridContainer.appendChild(newDivForGrid);
+            rowContainer.appendChild(newDivForGrid);
         }
     }
 }
